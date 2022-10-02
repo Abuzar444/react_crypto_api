@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { AiOutlineSearch } from 'react-icons/ai';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -34,13 +34,13 @@ const App = () => {
   return (
     <main className="w-[400px] main h-[600px]">
       {/*header*/}
-      <header className="flex justify-between shadow py-5 px-10 top">
+      <header className="flex justify-between items-center shadow py-5 px-10 top">
         <h1 className="text-xl">Prices</h1>
-        <h1 className="text-xl">search</h1>
+        <h1 className="text-xl cursor-pointer"><AiOutlineSearch /></h1>
       </header>
       <section>
         {data.map((crypto) => (
-          <div className="flex justify-between items-center py-5 px-10">
+          <div key={crypto.id} className="flex justify-between items-center py-5 px-10">
             {/*image and name*/}
             <div className='flex items-center'>
               <img src={crypto.image} alt={crypto.name} className="w-[50px] rounded-full pr-2" />
