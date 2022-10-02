@@ -37,7 +37,7 @@ const App = () => {
     <main className="w-[400px] main h-[600px] relative">
       {/*header*/}
       <header className="flex justify-between items-center shadow py-5 px-10 top-bar">
-        <h1 className="text-xl">Prices</h1>
+        <h1 className="text-xl">Crypto</h1>
         {check ? <input type={'text'} placeholder='search...' className='outline-none border' value={search} onChange={e => { setSearch(e.target.value) }} /> : <AiOutlineSearch className='cursor-pointer' onClick={() => setCheck(!check)} />}
       </header>
       <section>
@@ -51,7 +51,7 @@ const App = () => {
         }).map((crypto) => (
           <div key={crypto.id} className="flex justify-between items-center py-5 px-10">
             {/*image and name*/}
-            <div className='flex items-center'>
+            <div className='flex items-center cursor-pointer'>
               <img src={crypto.image} alt={crypto.name} className="w-[50px] rounded-full pr-2" />
               <h1 className='font-semibold'>{crypto.name}</h1>
             </div>
