@@ -3,6 +3,8 @@ import { AiOutlineSearch } from 'react-icons/ai';
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState('');
+  const [check, setCheck] = useState(false)
 
   const fetchApi = async () => {
     setLoading(true);
@@ -32,14 +34,21 @@ const App = () => {
 
 
   return (
-    <main className="w-[400px] main h-[600px]">
+    <main className="w-[400px] main h-[600px] relative">
       {/*header*/}
-      <header className="flex justify-between items-center shadow py-5 px-10 top">
+      <header className="flex justify-between items-center shadow py-5 px-10 top-bar">
         <h1 className="text-xl">Prices</h1>
-        <h1 className="text-xl cursor-pointer"><AiOutlineSearch /></h1>
+        {check ? <input type={'text'} placeholder='search...' className='outline-none border' value={search} onChange={(e) => setSearch(e.target.value)} /> : <AiOutlineSearch className='cursor-pointer' onClick={() => setCheck(!check)} />}
       </header>
       <section>
-        {data.map((crypto) => (
+        {data.filter((crypto) => {
+          if (search === '') {
+            return crypto;
+          }
+          else if (crypto.name.toLowerCase().includes(crypto.toLowerCase())) {
+            return crypto;
+          }
+        }).map((crypto) => (
           <div key={crypto.id} className="flex justify-between items-center py-5 px-10">
             {/*image and name*/}
             <div className='flex items-center'>
