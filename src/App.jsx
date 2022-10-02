@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const App = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const fetchApi = async () => {
@@ -21,8 +21,14 @@ const App = () => {
 
   useEffect(() => {
     fetchApi();
+    setLoading(false);
   }, []);
 
+  if (loading) {
+    return <div className="loading">
+      <h1>Loading...</h1>
+    </div>
+  }
 
 
   return (
