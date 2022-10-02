@@ -38,14 +38,14 @@ const App = () => {
       {/*header*/}
       <header className="flex justify-between items-center shadow py-5 px-10 top-bar">
         <h1 className="text-xl">Prices</h1>
-        {check ? <input type={'text'} placeholder='search...' className='outline-none border' value={search} onChange={(e) => setSearch(e.target.value)} /> : <AiOutlineSearch className='cursor-pointer' onClick={() => setCheck(!check)} />}
+        {check ? <input type={'text'} placeholder='search...' className='outline-none border' value={search} onChange={e => { setSearch(e.target.value) }} /> : <AiOutlineSearch className='cursor-pointer' onClick={() => setCheck(!check)} />}
       </header>
       <section>
         {data.filter((crypto) => {
           if (search === '') {
             return crypto;
           }
-          else if (crypto.name.toLowerCase().includes(crypto.toLowerCase())) {
+          else if (crypto.name.toLowerCase().includes(search.toLowerCase())) {
             return crypto;
           }
         }).map((crypto) => (
